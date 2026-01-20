@@ -1,29 +1,36 @@
-1. Contexto
+# Instalación y configuración inicial del servidor
+
+## Contexto
 En este laboratorio se configuró un servidor basado en Debian con el objetivo de practicar administración de sistemas Linux y hardening básico.
 
-Se eligió OpenMediaVault (OMV), que se ejecuta sobre Debian, ya que permite combinar un entorno de laboratorio de ciberseguridad con un servidor personal tipo NAS. Este enfoque facilita realizar pruebas de configuración y seguridad sin perder la funcionalidad práctica de un servidor doméstico.
+## Objetivo
+Configurar un servidor Debian con OMV como base para un laboratorio de ciberseguridad y uso como NAS personal, priorizando buenas prácticas de administración y seguridad.
 
-2. Acción
+## Acciones realizadas
 Se habilitó el acceso remoto mediante SSH y se creó un usuario no privilegiado, otorgándole privilegios administrativos controlados mediante sudo, con el fin de evitar el uso directo del usuario root.
 
-3. Problemas
-Tras aplicar configuraciones de endurecimiento en SSH, el acceso remoto falló para el usuario creado. El problema se evidenció durante los intentos de conexión por SSH.
+## Acciones realizadas
+- Instalación de Debian y OpenMediaVault
+- Creación de usuario no privilegiado
+- Habilitación de acceso remoto mediante SSH
 
-4. Diágnostico
-El análisis de los logs del servicio SSH, utilizando journalctl, permitió identificar una restricción en la directiva AllowGroups, la cual impedía el acceso del usuario al servicio.
+## Problemas encontrados
+- Fallo de acceso SSH para el usuario no root
 
-5. Solución
-Se modificó la directiva AllowGroups para incluir el grupo del usuario creado, lo que permitió restablecer el acceso remoto de forma controlada.
+## Diagnóstico
+- Revisión de logs del servicio SSH (`journalctl -u ssh`)
+- Identificación de restricción en la directiva `AllowGroups`
 
-6. Resultado
-El sistema quedó accesible de forma segura y documentado para futuras reproducciones.
+## Solución aplicada
+- Corrección de la directiva para incluir el grupo del usuario
+- Validación de acceso remoto exitoso
 
-7. Observaciones Técnicas adicionales
-Se validaron las directivas PermitRootLogin no y PasswordAuthentication yes en el archivo de configuración de SSH.
+## Resultado
+- Acceso SSH funcional y endurecido
+- Configuración documentada y reproducible
 
-Se configuró Visual Studio Code como editor principal y se añadió al PATH del sistema, evitando el uso de editores por consola como Vim durante la administración.
-
-Se creó un usuario con privilegios administrativos controlados mediante sudo, deshabilitando el acceso directo de root por buenas prácticas de seguridad.
-
-Se modificó el puerto SSH por defecto (22) a un puerto alternativo (90) como medida básica de reducción de superficie de ataque.
-
+## Notas adicionales
+- `PermitRootLogin no`
+- `PasswordAuthentication yes`
+- Cambio de puerto SSH 22 → 90
+- VS Code configurado como editor por defecto
