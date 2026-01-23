@@ -25,3 +25,8 @@ Analisis con grep -R openmediavault /etc/apt/sources.list /etc/apt/sources.list.
 - Servidor actualizado sin romper capa de servicios (OMV)
 - Debian 12 como base no se vio afectado
 - Se respeto modelo de seguridad de APT
+
+## Hallazgos y novedades
+Durante la actualización del repositorio se presentó un error HTTP 403 al intentar realizar git push.
+El problema se debió a la creación de un Personal Access Token sin el scope repo, lo que impedía operaciones de escritura.
+Tras regenerar el token con los permisos correctos y actualizar las credenciales locales, la operación se completó exitosamente.
