@@ -48,3 +48,43 @@
 - Causa real: desconexión física del cable Ethernet.
 - Lección técnica: validar capas 1–3 antes de asumir fallos de configuración
 
+## Nmap a servidor desde VM atacante
+### Escaneo TCP basico
+- namp 192.168.128.x
+* confirmacion de puertos 80, 90, 111
+
+### Escaneo dirigido
+- nmap -p 90 192.168.128.x
+* Confirmacion de estado (open), servicio detectado y latencia
+- Redireccion de salida 
+* nmap -p 90 192.168.128.x -oN scan-p90.txt
+* luego less scan-p90.txt
+
+### Escaneo de servicios
+- nmap sV -p 80,90,111 192.168.128.x
+* Nginx, SSH, RCP, Banner identificado
+
+### Resultados preliminares
+- confirmacion de puertos expuestos vs ss-tulpen
+
+## Servicio rpcbind
+- Estado: activo y expuesto
+- Uso esperado: NFS / RPC legacy
+- Riesgo: alto si no se utiliza
+- Decisión pendiente: restringir o deshabilitar
+
+### validacion y salida de rpcbind
+- systemctl status rpcbind
+- systemctl list-dependencies rpcbind
+
+### Deshabilitacion de rpcbind (puerto 111) controlada y validacion de impacto
+* Servicio innecesario identificado por escaneo interno y externo.
+* Confirmación de no uso por NFS.
+* Deshabilitado mediante systemd.
+* Reducción comprobada de superficie de ataque.
+- sudo systemctl stop rpcbind
+- sudo systemctl stop rpcbind.socket
+- sudo systemctl disable rpcbind
+- sudo systemctl disable rpcbind.socket
+
+
