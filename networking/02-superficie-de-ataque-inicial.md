@@ -26,7 +26,7 @@
 - Resolver local
 - Multicast DNS (mDNS)
 
-###chrony (NTP)
+### chrony (NTP)
 -loopback correcto
 
 ## Servicios que requieren revisión futura
