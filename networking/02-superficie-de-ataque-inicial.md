@@ -40,4 +40,11 @@
 - vulnerable a ataques
 - No exponer si no se usa NFS
 
+## Incidente durante prueba de escaneo 
+### Observaciones operativas durante cambio de modo de red (VirtualBox)
+- Contexto: cambio de red en VM atacante durante pruebas de escaneo.
+- Síntomas observados: pérdida de conectividad, NO-CARRIER, Destination Host Unreachable.
+- Hipótesis inicial (incorrecta): cambio de IP / fallo lógico.
+- Causa real: desconexión física del cable Ethernet.
+- Lección técnica: validar capas 1–3 antes de asumir fallos de configuración
 
