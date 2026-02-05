@@ -43,3 +43,12 @@
 
 ## Resultado:
 “Servidor con política de mínimo privilegio y superficie de ataque reducida.”
+
+## Actualizaciones despues de validaciones
+- sudo apt update
+- sudo apt upgrade
+* Servidor parchado a versiones recientes 05/02/2026
+- Actualización de seguridad y paquetes críticos:
+- gnupg2: corrección de vulnerabilidades y mejora en la verificación de firmas.
+- libxml2: mitigación de vulnerabilidad de denegación de servicio (XPath).
+- vim: ajuste de pruebas problemáticas en compilación.
