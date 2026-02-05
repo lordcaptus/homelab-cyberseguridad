@@ -90,5 +90,6 @@
 ## Post-hardening 
 - Nuevo escaneo no muestra puerto deshabilitado 111.
 - Sin afectacion en dependencias
+- Endurecimiento en Security hardening
 
 
