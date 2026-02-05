@@ -87,4 +87,8 @@
 - sudo systemctl disable rpcbind
 - sudo systemctl disable rpcbind.socket
 
+## Post-hardening 
+- Nuevo escaneo no muestra puerto deshabilitado 111.
+- Sin afectacion en dependencias
+
 
